@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title%} Home {% endblock %}
+
+{% block content %}
+<style>
+
+    img { width:55%; min-height:70px;}
+
+</style>
+
+{% if classes %}
+<!---->
+
+<div class="p-4">
+    <h1 class="myhead2">Class List</h1>
+<hr>
+
+<div class="row">
+		{% for class in classes %}
+		<div class="col-lg-4">
+			<img style="width:200px; height:280px;" class="thumbnail img-responsive" src="{{class.image_url}}">
+			<div class="box-element product">
+                <h6><strong>{{class.course_name}}</strong><span class="mx-2">by: <i>{{class.teacher}}</i></span></h6>
+
+					<a class="btn btn-outline-secondary" href="{% url 'class_detail' class.id%}">View</a></button>
+
+
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+<!--    -->
+
+{% else %}
+<h2>No Classes Availbale now.</h2>
+{% endif %}
+{% endblock %}

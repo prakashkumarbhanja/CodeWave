@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title%} Enrolled Class List {% endblock %}
+
+
+{% block content %}
+
+{% if enroll_class_list %}
+<!---->
+
+<div class="p-5">
+    <h1 class="myhead2">Class List</h1>
+<hr>
+
+<div class="row">
+		{% for class in enroll_class_list %}
+		<div class="col-lg-4">
+			<img style="width:250px; height:300px;" class="thumbnail img-responsive" src="{{class.enrolled_class.image_url}}">
+			<div class="box-element product">
+                <h6><strong>{{class.enrolled_class.course_name}}</strong><span class="mx-2">by: <i>{{class.teacher_name}}</i></span></h6>
+
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+{% else %}
+<h2 class="mt-5" style="margin-left: auto;
+    margin-right: auto;
+    width: 13em;">No Classes Availabale now.</h2>
+{% endif %}
+{% endblock %}

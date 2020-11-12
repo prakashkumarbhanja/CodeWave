@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title%} Register {% endblock %}
+
+{% block content %}
+
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+
+<!--From here form-->
+<main class="p-5">
+<div class="row">
+	<div class="col-sm-6 offset-sm-3">
+	<h1 class="myhead2">Create User</h1>
+		<hr>
+		<form enctype="multipart/form-data" method="POST">
+		{% csrf_token %}
+		{{form | crispy}}
+		<input class="btn btn-dark my-3" type="submit" />
+		<a class="btn btn-dark mx-3" href="{% url 'home' %}">home page</a>
+		</form>
+
+	</div>
+</div>
+</main>
+
+
+{% endblock %}

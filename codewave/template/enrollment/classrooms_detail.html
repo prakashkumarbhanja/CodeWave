@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title%} Class Detail {% endblock %}
+
+{% block content %}
+
+<style>
+
+    img { width:55%; min-height:70px;}
+
+</style>
+
+<script>
+var btn_id = document.getElementsById("a");
+alert(btn_id)
+
+
+</script>
+
+<div class="p-5">
+    <h1 class="myhead2">Class Detail</h1>
+<hr>
+
+    <div class="row">
+        <div class="col-4">
+
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="{{object.image_url}}" alt="Card image cap">
+            </div>
+
+        </div>
+        <div class="col-8">
+            <h3>Class :{{object.course_name}}</h3>
+            <p><b>Teacher : </b><i>{{object.teacher}}</i></p>
+            <p><b>Description:</b> {{object.description}}</p>
+            <p><b>Published : </b><i>{{object.add_on}}</i></p>
+
+            <form method="GET" action="{% url 'enroll_class' object.id %}">
+
+            <input type="text" name="obj_id" value="{{object.id}}" hidden>
+                <input class="btn btn-outline-secondary" type="submit" value="Enroll Now">
+                </form>
+
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
